@@ -114,7 +114,7 @@ public class DBUtil {
 		Session session = getSessionFactory().openSession();
 		session.beginTransaction();
 		
-		List<Observation> observations = new ArrayList<>();
+		List<Observation> observations = new ArrayList<Observation>();
 		observations.add(observation);
 		
 		Producer producer =(Producer)session.get(Producer.class, producer_id);
@@ -224,7 +224,7 @@ public class DBUtil {
 		session.beginTransaction();
 		@SuppressWarnings("unchecked")
 		List<Object[]> result = session.createSQLQuery("SELECT * FROM iot_user").list();	
-		ArrayList<User> users = new ArrayList<>();
+		ArrayList<User> users = new ArrayList<User>();
 		for (Object[] u : result) {
 			User usr = new User(Integer.parseInt(u[0].toString()), u[1].toString());
 			users.add(usr);
@@ -240,7 +240,7 @@ public class DBUtil {
 //		List<String> result = session.createSQLQuery("SELECT serial FROM producer").list();
 		@SuppressWarnings("unchecked")
 		List<Object[]> result = session.createSQLQuery("SELECT serial FROM producer").list();	
-		ArrayList<String> serials = new ArrayList<>();
+		ArrayList<String> serials = new ArrayList<String>();
 		for (Object[] o : result) {
 			serials.add(o[0].toString());
 		}
