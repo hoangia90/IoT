@@ -29,8 +29,8 @@ public class Producer {
 	private String name;
 	@Column(name = "model")
 	private String model;
-	@Column(name = "manufacturer")
-	private String manufacturer;
+	@Column(name = "manufacture")
+	private String manufacture;
 	
 	@OneToMany(mappedBy="producer", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 //	@JoinColumn(name="id", nullable=false)
@@ -42,19 +42,19 @@ public class Producer {
 		
 	}
 	
-	public Producer(String serial, String name, String model, String manufacturer) {
+	public Producer(String serial, String name, String model, String manufacture) {
 		this.serial = serial;
 		this.name = name;
 		this.model = model;
-		this.manufacturer = manufacturer;
+		this.manufacture = manufacture;
 	}
 	
-//	public Producer(int id, String name, String model, String manufacturer) {
+//	public Producer(int id, String name, String model, String manufacture) {
 //		super();
 //		this.id = id;
 //		this.name = name;
 //		this.model = model;
-//		this.manufacturer = manufacturer;
+//		this.manufacture = manufacture;
 //	}
 	
 	public String getSerial() {
@@ -91,10 +91,10 @@ public class Producer {
 	public void setModel(String model) {
 		this.model = model;
 	}
-	public String getmanufacturer() {
-		return manufacturer;
+	public String getmanufacture() {
+		return manufacture;
 	}
-	public void setmanufacturer(String manufacturer) {
-		this.manufacturer = manufacturer;
+	public void setmanufacture(String manufacture) {
+		this.manufacture = manufacture;
 	}
 }
