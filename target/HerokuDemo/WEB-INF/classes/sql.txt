@@ -1,0 +1,19 @@
+CREATE TABLE public.sensor
+(
+    id serial NOT NULL,
+    name character varying,
+    type character varying,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE public.producer
+(
+    id serial NOT NULL,
+    name character varying,
+    model character varying,
+    manfacturer character varying,
+    PRIMARY KEY (id)
+);
+
+ALTER TABLE public.sensor
+    OWNER to postgres;
