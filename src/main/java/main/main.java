@@ -92,7 +92,7 @@ public class main extends HttpServlet {
 		setRequest(request, response);
 
 		if (!parameterNames.isEmpty() && isUser()) {
-			if (checkParam(0, "req", "insert") && checkParam(1, "table", "sensor") && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("name") && !parameterNames.get(3).isEmpty() && parameterNames.get(3).equals("type") ) {
+			if (checkParam(0, "req", "insert") && checkParam(1, "table", "sensor") && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("name") && !parameterNames.get(3).isEmpty() && parameterNames.get(3).equals("type") && !parameterNames.get(4).isEmpty() && parameterNames.get(4).equals("user")) {
 				Sensor sensor = new Sensor(getValueAt(2), getValueAt(3));
 				DBUtil.createSensor(sensor);
 				String reqJsonString = new Gson().toJson(sensor);
@@ -101,7 +101,7 @@ public class main extends HttpServlet {
 				response.setCharacterEncoding("UTF-8");
 				out.print(reqJsonString);
 				out.flush();	
-			} else if (checkParam(0, "req", "insert") && checkParam(1, "table", "producer") && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("serial") && !parameterNames.get(3).isEmpty() && parameterNames.get(3).equals("name") && !parameterNames.get(4).isEmpty() && parameterNames.get(4).equals("model") && !parameterNames.get(5).isEmpty() &&  parameterNames.get(5).equals("manufacture") ) {
+			} else if (checkParam(0, "req", "insert") && checkParam(1, "table", "producer") && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("serial") && !parameterNames.get(3).isEmpty() && parameterNames.get(3).equals("name") && !parameterNames.get(4).isEmpty() && parameterNames.get(4).equals("model") && !parameterNames.get(5).isEmpty() &&  parameterNames.get(5).equals("manufacture") && !parameterNames.get(6).isEmpty() && parameterNames.get(6).equals("user")) {
 				Producer producer = new Producer(getValueAt(2), getValueAt(3), getValueAt(4), getValueAt(5));
 				DBUtil.createProducer(producer);
 				String reqJsonString = new Gson().toJson(producer);
@@ -110,7 +110,7 @@ public class main extends HttpServlet {
 				response.setCharacterEncoding("UTF-8");
 				out.print(reqJsonString);
 				out.flush();
-			} else if (checkParam(0, "req", "insert") && checkParam(1, "table", "observation") && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("sensorid") && !parameterNames.get(3).isEmpty() && parameterNames.get(3).equals("producerid") && !parameterNames.get(4).isEmpty() && parameterNames.get(4).equals("location") && !parameterNames.get(5).isEmpty() && parameterNames.get(5).equals("value") && !parameterNames.get(6).isEmpty() && parameterNames.get(6).equals("serial") && isSerial(getValueAt(6)) ) {
+			} else if (checkParam(0, "req", "insert") && checkParam(1, "table", "observation") && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("sensorid") && !parameterNames.get(3).isEmpty() && parameterNames.get(3).equals("producerid") && !parameterNames.get(4).isEmpty() && parameterNames.get(4).equals("location") && !parameterNames.get(5).isEmpty() && parameterNames.get(5).equals("value") && !parameterNames.get(6).isEmpty() && parameterNames.get(6).equals("serial") && isSerial(getValueAt(6)) && !parameterNames.get(7).isEmpty() && parameterNames.get(7).equals("user")) {
 				Producer producer = DBUtil.findByProducerID(Integer.parseInt(getValueAt(2)));
 				Sensor sensor = DBUtil.findBySensorID(Integer.parseInt(getValueAt(3)));
 				Observation observation = new Observation(producer, sensor, getValueAt(4),  getValueAt(5));
@@ -134,7 +134,7 @@ public class main extends HttpServlet {
 				out.flush();
 			
 			
-			} else if (checkParam(0, "req", "delete") && checkParam(1, "table", "sensor")  && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("id")) {
+			} else if (checkParam(0, "req", "delete") && checkParam(1, "table", "sensor")  && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("id") && !parameterNames.get(3).isEmpty() && parameterNames.get(3).equals("user")) {
 				DBUtil.deleteSensor(Integer.parseInt(getValueAt(2)));
 				JsonObject limitInfo = new JsonObject();
 				limitInfo.addProperty("Msg", "Delete sensor" + Integer.parseInt(getValueAt(2)));
@@ -144,7 +144,7 @@ public class main extends HttpServlet {
 				response.setCharacterEncoding("UTF-8");
 				out.print(reqJsonString);
 				out.flush();
-			} else if (checkParam(0, "req", "delete") && checkParam(1, "table", "producer")  && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("sid")) {
+			} else if (checkParam(0, "req", "delete") && checkParam(1, "table", "producer")  && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("sid") && !parameterNames.get(3).isEmpty() && parameterNames.get(3).equals("user")) {
 				DBUtil.deleteProducer(Integer.parseInt(getValueAt(2)));
 				JsonObject limitInfo = new JsonObject();
 				limitInfo.addProperty("Msg", "Delete producer" + Integer.parseInt(getValueAt(2)));
@@ -154,7 +154,7 @@ public class main extends HttpServlet {
 				response.setCharacterEncoding("UTF-8");
 				out.print(reqJsonString);
 				out.flush();
-			} else if (checkParam(0, "req", "delete") && checkParam(1, "table", "observation")  && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("id")) {
+			} else if (checkParam(0, "req", "delete") && checkParam(1, "table", "observation")  && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("id") && !parameterNames.get(3).isEmpty() && parameterNames.get(3).equals("user")) {
 				DBUtil.deleteObservation(Integer.parseInt(getValueAt(2)));
 				JsonObject limitInfo = new JsonObject();
 				limitInfo.addProperty("Msg", "Delete observation" + Integer.parseInt(getValueAt(2)));
@@ -166,7 +166,7 @@ public class main extends HttpServlet {
 				out.flush();
 			
 			
-			} else if (checkParam(0, "req", "show") && checkParam(1, "table", "sensor") ) {
+			} else if (checkParam(0, "req", "show") && checkParam(1, "table", "sensor") && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("user")) {
 				List<Sensor> list = DBUtil.selectAllSensor();
 				String reqJsonString = "";
 				ObjectMapper mapper = new ObjectMapper();
@@ -185,7 +185,7 @@ public class main extends HttpServlet {
 				response.setCharacterEncoding("UTF-8");
 				out.print(reqJsonString);
 				out.flush();
-			} else if (checkParam(0, "req", "show") && checkParam(1, "table", "producer") ) {
+			} else if (checkParam(0, "req", "show") && checkParam(1, "table", "producer") && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("user")) {
 				List<Producer> list = DBUtil.selectAllProducer();
 				String reqJsonString = "";
 				ObjectMapper mapper = new ObjectMapper();
@@ -204,7 +204,7 @@ public class main extends HttpServlet {
 				response.setCharacterEncoding("UTF-8");
 				out.print(reqJsonString);
 				out.flush();
-			} else if (checkParam(0, "req", "show") && checkParam(1, "table", "observation") ) {
+			} else if (checkParam(0, "req", "show") && checkParam(1, "table", "observation") && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("user")) {
 				List<Observation> list = DBUtil.selectAllObservation();
 				String reqJsonString = "";
 				ObjectMapper mapper = new ObjectMapper();
