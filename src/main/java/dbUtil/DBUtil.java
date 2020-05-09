@@ -35,27 +35,27 @@ public class DBUtil {
 //}
 	
 	//Heroku
-//	static String DRIVER = "org.postgresql.Driver";
-//	//Remote to Heroku
-////	static String URL = "jdbc:postgresql://ec2-54-247-85-251.eu-west-1.compute.amazonaws.com:5432/d3cduui8428u5l?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory&user=xkxtjvpzvnhpnm&password=a368f47b501eb93092a92f4e6d9ec1b4fc47f35abeccd98bdce90de459c2685b";
-//	//On Heroku
-//	static String URL = "jdbc:postgresql://ec2-54-247-85-251.eu-west-1.compute.amazonaws.com:5432/d3cduui8428u5l?sslmode=require&user=xkxtjvpzvnhpnm&password=a368f47b501eb93092a92f4e6d9ec1b4fc47f35abeccd98bdce90de459c2685b";
-////	static String USER = "xkxtjvpzvnhpnm";
-////	static String PASS = "a368f47b501eb93092a92f4e6d9ec1b4fc47f35abeccd98bdce90de459c2685b";
-//	static String DIALECT = "org.hibernate.dialect.PostgreSQLDialect";
-//	static String SHOW_SQL = "true";
-//	static String CURRENT_SESSION_CONTEXT_CLASS = "thread";
-//	static String HBM2DDL_AUTO = "create-drop";
-	
-	//Local
 	static String DRIVER = "org.postgresql.Driver";
-	static String URL = "jdbc:postgresql://localhost:5432/IoT?user=postgres&password=123&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
-//	static String USER = "postgres";
-//	static String PASS = "123";
+	//Remote to Heroku
+//	static String URL = "jdbc:postgresql://ec2-54-247-85-251.eu-west-1.compute.amazonaws.com:5432/d3cduui8428u5l?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory&user=xkxtjvpzvnhpnm&password=a368f47b501eb93092a92f4e6d9ec1b4fc47f35abeccd98bdce90de459c2685b";
+	//On Heroku
+	static String URL = "ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/damf1hqq0uf37l?sslmode=require&user=raeurnikaltquu&password=946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c";
+//	static String USER = "xkxtjvpzvnhpnm";
+//	static String PASS = "a368f47b501eb93092a92f4e6d9ec1b4fc47f35abeccd98bdce90de459c2685b";
 	static String DIALECT = "org.hibernate.dialect.PostgreSQLDialect";
 	static String SHOW_SQL = "true";
 	static String CURRENT_SESSION_CONTEXT_CLASS = "thread";
 	static String HBM2DDL_AUTO = "create-drop";
+	
+	//Local
+//	static String DRIVER = "org.postgresql.Driver";
+//	static String URL = "jdbc:postgresql://localhost:5432/IoT?user=postgres&password=123&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
+////	static String USER = "postgres";
+////	static String PASS = "123";
+//	static String DIALECT = "org.hibernate.dialect.PostgreSQLDialect";
+//	static String SHOW_SQL = "true";
+//	static String CURRENT_SESSION_CONTEXT_CLASS = "thread";
+//	static String HBM2DDL_AUTO = "create-drop";
 	
 	
 	
