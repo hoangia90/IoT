@@ -28,7 +28,7 @@ public class Sensor {
 	@Column(name = "type")
 	private String type;
 	
-	@OneToMany(mappedBy="sensor", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy="sensor", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //	@JoinColumn(name="id", nullable=false)
 //	private Observation observation;
 	@JsonIgnore

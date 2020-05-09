@@ -239,14 +239,11 @@ public class DBUtil {
 		session.beginTransaction();
 //		List<String> result = session.createSQLQuery("SELECT serial FROM producer").list();
 		@SuppressWarnings("unchecked")
-		List<Object[]> result = session.createSQLQuery("SELECT serial FROM producer").list();	
-		ArrayList<String> serials = new ArrayList<String>();
-		for (Object[] o : result) {
-			serials.add(o[0].toString());
-		}
+		List<String> result = session.createSQLQuery("SELECT serial FROM producer").list();	
+
 		session.getTransaction().commit();
 		session.close();
-	    return serials;
+	    return (ArrayList<String>) result;
 	}
 
 

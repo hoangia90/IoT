@@ -32,7 +32,7 @@ public class Producer {
 	@Column(name = "manufacture")
 	private String manufacture;
 	
-	@OneToMany(mappedBy="producer", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy="producer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //	@JoinColumn(name="id", nullable=false)
 //	private Observation observation;
 	@JsonIgnore
