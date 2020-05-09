@@ -1,7 +1,6 @@
 package dbUtil;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
@@ -192,6 +191,7 @@ public class DBUtil {
 	public static List<Sensor> selectAllSensor() {
 		Session session = getSessionFactory().openSession();
 		session.beginTransaction();
+		@SuppressWarnings("unchecked")
 		List<Sensor> result = session.createSQLQuery("SELECT * FROM sensor").list();
 		session.getTransaction().commit();
 		session.close();
@@ -201,6 +201,7 @@ public class DBUtil {
 	public static List<Producer> selectAllProducer() {
 		Session session = getSessionFactory().openSession();
 		session.beginTransaction();
+		@SuppressWarnings("unchecked")
 		List<Producer> result = session.createSQLQuery("SELECT * FROM producer").list();
 		session.getTransaction().commit();
 		session.close();
@@ -210,6 +211,7 @@ public class DBUtil {
 	public static List<Observation> selectAllObservation() {
 		Session session = getSessionFactory().openSession();
 		session.beginTransaction();
+		@SuppressWarnings("unchecked")
 		List<Observation> result = session.createSQLQuery("SELECT * FROM observation").list();
 		session.getTransaction().commit();
 		session.close();
@@ -219,6 +221,7 @@ public class DBUtil {
 	public static ArrayList<User> selectAllUser() {
 		Session session = getSessionFactory().openSession();
 		session.beginTransaction();
+		@SuppressWarnings("unchecked")
 		List<Object[]> result = session.createSQLQuery("SELECT * FROM iot_user").list();	
 		ArrayList<User> users = new ArrayList<>();
 		for (Object[] u : result) {
@@ -234,6 +237,7 @@ public class DBUtil {
 		Session session = getSessionFactory().openSession();
 		session.beginTransaction();
 //		List<String> result = session.createSQLQuery("SELECT serial FROM producer").list();
+		@SuppressWarnings("unchecked")
 		List<Object[]> result = session.createSQLQuery("SELECT serial FROM producer").list();	
 		ArrayList<String> serials = new ArrayList<>();
 		for (Object[] o : result) {
