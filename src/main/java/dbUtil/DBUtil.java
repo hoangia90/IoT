@@ -117,7 +117,7 @@ public class DBUtil {
 		session.beginTransaction();
 		session.save(sensor);
 		session.getTransaction().commit();
-//		session.close();
+		session.close();
 		System.out.println("Successfully created " + sensor.toString());
 	}
 	
@@ -126,7 +126,7 @@ public class DBUtil {
 		session.beginTransaction();
 		session.save(producer);
 		session.getTransaction().commit();
-//		session.close();
+		session.close();
 		System.out.println("Successfully created " + producer.toString());
 	}
 	
@@ -151,7 +151,7 @@ public class DBUtil {
 		
 		session.save(observation);
 		session.getTransaction().commit();
-//		session.close();
+		session.close();
 		System.out.println("Successfully created " + observation.toString());
 	}
 	
@@ -161,7 +161,7 @@ public class DBUtil {
 		Sensor sensor = findBySensorID(id);
 		session.delete(sensor);
 		session.getTransaction().commit();
-//		session.close();
+		session.close();
 		System.out.println("Successfully deleted " + sensor.toString());
 
 	}
@@ -169,7 +169,7 @@ public class DBUtil {
 	public static Sensor findBySensorID(Integer id) {
 		Session session = getSessionFactory().openSession();
 		Sensor sensor = (Sensor) session.load(Sensor.class, id);
-//		session.close();
+		session.close();
 		return sensor;
 	}
 	
@@ -179,7 +179,7 @@ public class DBUtil {
 		Producer producer = findByProducerID(id);
 		session.delete(producer);
 		session.getTransaction().commit();
-//		session.close();
+		session.close();
 		System.out.println("Successfully deleted " + producer.toString());
 
 	}
@@ -187,7 +187,7 @@ public class DBUtil {
 	public static Producer findByProducerID(Integer id) {
 		Session session = getSessionFactory().openSession();
 		Producer producer = (Producer) session.load(Producer.class, id);
-//		session.close();
+		session.close();
 		return producer;
 	}
 	
@@ -197,7 +197,7 @@ public class DBUtil {
 		Observation observation = findByObservationID(id);
 		session.delete(observation);
 		session.getTransaction().commit();
-//		session.close();
+		session.close();
 		System.out.println("Successfully deleted " + observation.toString());
 
 	}
@@ -205,7 +205,7 @@ public class DBUtil {
 	public static Observation findByObservationID(Integer id) {
 		Session session = getSessionFactory().openSession();
 		Observation observation = (Observation) session.load(Observation.class, id);
-//		session.close();
+		session.close();
 		return observation;
 	}
 	
@@ -215,7 +215,7 @@ public class DBUtil {
 		@SuppressWarnings("unchecked")
 		List<Sensor> result = session.createSQLQuery("SELECT * FROM sensor").list();
 		session.getTransaction().commit();
-//		session.close();
+		session.close();
 	    return result;
 	}
 	
@@ -225,7 +225,7 @@ public class DBUtil {
 		@SuppressWarnings("unchecked")
 		List<Producer> result = session.createSQLQuery("SELECT * FROM producer").list();
 		session.getTransaction().commit();
-//		session.close();
+		session.close();
 	    return result;
 	}
 	
@@ -235,7 +235,7 @@ public class DBUtil {
 		@SuppressWarnings("unchecked")
 		List<Observation> result = session.createSQLQuery("SELECT * FROM observation").list();
 		session.getTransaction().commit();
-//		session.close();
+		session.close();
 	    return result;
 	}
 	
@@ -250,7 +250,7 @@ public class DBUtil {
 			users.add(usr);
 		}
 		session.getTransaction().commit();
-//		session.close();
+		session.close();
 	    return users;
 	}
 	
@@ -262,7 +262,7 @@ public class DBUtil {
 		List<String> result = session.createSQLQuery("SELECT serial FROM producer").list();	
 
 		session.getTransaction().commit();
-//		session.close();
+		session.close();
 	    return (ArrayList<String>) result;
 	}
 
