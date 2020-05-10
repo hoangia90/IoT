@@ -6,10 +6,7 @@
 
 <form action="" method="GET">
 
-<!-- The current state of the counter:  "${counter}" -->
-<p>The current value : <%=request.getAttribute("randomNumber") %> </p>
-<!-- <p>Usage : <%=request.getAttribute("counter") %> / <%=request.getAttribute("limit") %> </p> -->
-<p>From server : <%=request.getAttribute("server") %> </p>
+
 
 
 

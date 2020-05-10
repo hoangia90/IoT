@@ -29,8 +29,6 @@ public class main extends HttpServlet {
 	HttpServletResponse response;
 	List<String> parameterNames;
 	
-	DBUtil dbutil = new DBUtil();
-	
 	
 	//This help writing the additional methods faster - no need to declare arguments
 	void setRequest (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -56,7 +54,7 @@ public class main extends HttpServlet {
 	}
 	
 	boolean isUser() {
-		ArrayList<User> users = dbutil.selectAllUser();
+		ArrayList<User> users = DBUtil.selectAllUser();
 		boolean b = false;
 		String name = "";
 		for (int i = 0; i < parameterNames.size(); i++) {

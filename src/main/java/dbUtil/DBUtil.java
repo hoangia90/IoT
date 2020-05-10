@@ -1,5 +1,6 @@
 package dbUtil;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -17,8 +18,12 @@ import observation.Observation;
 
 public class DBUtil {
 
-//	static Session sessionObj;
-	static SessionFactory sessionFactory = getSessionFactory();
+	static Session sessionObj;
+	static SessionFactory sessionFactory;
+	
+//	static SessionFactory sessionFactory = getSessionFactory();
+//	static Session session = sessionFactory.getCurrentSession();
+
 
 //  private static SessionFactory buildSessionFactory() {
 //  // Creating Configuration Instance & Passing Hibernate Configuration File
@@ -219,11 +224,11 @@ public class DBUtil {
 	    return result;
 	}
 	
-	public ArrayList<User> selectAllUser() {
+	public static ArrayList<User> selectAllUser() {
 		Session session = getSessionFactory().openSession();
 		session.beginTransaction();
-		List<Object[]> result = null;
-		result = (List<Object[]>) session.createSQLQuery("SELECT * FROM iot_user").list();	
+		@SuppressWarnings("unchecked")
+		List<Object[]> result = session.createSQLQuery("SELECT * FROM iot_user").list();
 		ArrayList<User> users = new ArrayList<User>();
 		for (Object[] u : result) {
 			User usr = new User(Integer.parseInt(u[0].toString()), u[1].toString());
