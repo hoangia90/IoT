@@ -49,6 +49,8 @@ public class DBUtil {
 	static String CURRENT_SESSION_CONTEXT_CLASS = "thread";
 	static String HBM2DDL_AUTO = "create-drop";
 	
+	String jdbcDbUrl = System.getenv("JDBC_DATABASE_URL");
+	
 	//Local
 //	static String DRIVER = "org.postgresql.Driver";
 //	static String URL = "jdbc:postgresql://localhost:5432/IoT?user=postgres&password=123&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
@@ -72,7 +74,7 @@ public class DBUtil {
 //        		configuration.setProperty("hibernate.connection.password", "1234");
 				Properties settings = new Properties();
 				settings.put(Environment.DRIVER, DRIVER);
-				settings.put(Environment.URL, URL);
+				settings.put(Environment.URL, jdbcDbUrl);
 //				settings.put(Environment.USER, USER);
 //				settings.put(Environment.PASS, PASS);
 				settings.put(Environment.DIALECT, DIALECT);
