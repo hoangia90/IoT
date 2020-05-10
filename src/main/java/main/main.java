@@ -238,7 +238,10 @@ public class main extends HttpServlet {
 				}
 				String s = DBtest.PostgresqlHerokuTest(JdbcUrl);
 				JsonObject limitInfo = new JsonObject();
-				limitInfo.addProperty("Error", s);
+				limitInfo.addProperty("Msg", s);
+				limitInfo.addProperty("uri", uri);
+				limitInfo.addProperty("JdbcUrl", JdbcUrl);
+				
 				String reqJsonString = new Gson().toJson(limitInfo);
 				PrintWriter out = response.getWriter();
 				response.setContentType("application/json");
