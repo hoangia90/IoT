@@ -123,12 +123,6 @@
 
 	</dependencies>
 
-	<!-- repositories> <repository> <id>in-project</id> <name>In Project Repository</name> 
-		<url>file://${project.basedir}/src/main/webapp/WEB-INF/lib</url> </repository> 
-		</repositories -->
-
-
-
 
 	<build>
 		<finalName>IoT</finalName>
