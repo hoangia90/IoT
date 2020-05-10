@@ -77,7 +77,7 @@ public class DBUtil {
 				settings.put(Environment.DIALECT, DIALECT);
 				settings.put(Environment.SHOW_SQL, SHOW_SQL);
 				settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, CURRENT_SESSION_CONTEXT_CLASS);
-//				settings.put(Environment.HBM2DDL_AUTO, HBM2DDL_AUTO);
+				settings.put(Environment.HBM2DDL_AUTO, HBM2DDL_AUTO);
 				configuration.setProperties(settings);
 
 				StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
