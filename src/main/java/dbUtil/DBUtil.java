@@ -219,7 +219,7 @@ public class DBUtil {
 	    return result;
 	}
 	
-	public static ArrayList<User> selectAllUser() {
+	public ArrayList<User> selectAllUser() {
 		Session session = getSessionFactory().openSession();
 		session.beginTransaction();
 		List<Object[]> result = null;
