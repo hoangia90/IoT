@@ -140,17 +140,17 @@ public class main extends HttpServlet {
 			} else if (checkParam(0, "req", "delete") && checkParam(1, "table", "sensor")  && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("id") && !parameterNames.get(3).isEmpty() && parameterNames.get(3).equals("user")) {
 				DBUtil.deleteSensor(Integer.parseInt(getValueAt(2)));
 				JsonObject limitInfo = new JsonObject();
-				limitInfo.addProperty("Msg", "Delete sensor" + Integer.parseInt(getValueAt(2)));
+				limitInfo.addProperty("Msg", "Delete sensor " + Integer.parseInt(getValueAt(2)));
 				String reqJsonString = new Gson().toJson(limitInfo);
 				PrintWriter out = response.getWriter();
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
 				out.print(reqJsonString);
 				out.flush();
-			} else if (checkParam(0, "req", "delete") && checkParam(1, "table", "producer")  && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("sid") && !parameterNames.get(3).isEmpty() && parameterNames.get(3).equals("user")) {
+			} else if (checkParam(0, "req", "delete") && checkParam(1, "table", "producer")  && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("id") && !parameterNames.get(3).isEmpty() && parameterNames.get(3).equals("user")) {
 				DBUtil.deleteProducer(Integer.parseInt(getValueAt(2)));
 				JsonObject limitInfo = new JsonObject();
-				limitInfo.addProperty("Msg", "Delete producer" + Integer.parseInt(getValueAt(2)));
+				limitInfo.addProperty("Msg", "Delete producer " + Integer.parseInt(getValueAt(2)));
 				String reqJsonString = new Gson().toJson(limitInfo);
 				PrintWriter out = response.getWriter();
 				response.setContentType("application/json");
@@ -160,7 +160,7 @@ public class main extends HttpServlet {
 			} else if (checkParam(0, "req", "delete") && checkParam(1, "table", "observation")  && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("id") && !parameterNames.get(3).isEmpty() && parameterNames.get(3).equals("user")) {
 				DBUtil.deleteObservation(Integer.parseInt(getValueAt(2)));
 				JsonObject limitInfo = new JsonObject();
-				limitInfo.addProperty("Msg", "Delete observation" + Integer.parseInt(getValueAt(2)));
+				limitInfo.addProperty("Msg", "Delete observation " + Integer.parseInt(getValueAt(2)));
 				String reqJsonString = new Gson().toJson(limitInfo);
 				PrintWriter out = response.getWriter();
 				response.setContentType("application/json");
