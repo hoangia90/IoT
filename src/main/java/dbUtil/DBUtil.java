@@ -39,6 +39,7 @@ public class DBUtil {
 	//Remote to Heroku
 //	static String URL = "jdbc:postgresql://ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/damf1hqq0uf37l?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory&user=raeurnikaltquu&password=946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c";
 	//On Heroku
+	
 //	static String URL = "ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/damf1hqq0uf37l?sslmode=require&user=raeurnikaltquu&password=946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c";
 	static String URL = "jdbc:postgresql://ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/damf1hqq0uf37l?sslmode=require&sslfactory=org.postgresql.ssl.NonValidatingFactory&user=raeurnikaltquu&password=946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c";
 //	static String USER = "xkxtjvpzvnhpnm";
