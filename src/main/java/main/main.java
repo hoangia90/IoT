@@ -54,7 +54,8 @@ public class main extends HttpServlet {
 	}
 	
 	boolean isUser() {
-		ArrayList<User> users = DBUtil.selectAllUser();
+		ArrayList<User> users = new ArrayList<User>();
+		users = DBUtil.selectAllUser();
 		boolean b = false;
 		String name = "";
 		for (int i = 0; i < parameterNames.size(); i++) {
