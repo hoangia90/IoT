@@ -61,7 +61,7 @@ public class DBUtil {
 	
 	public static SessionFactory getSessionFactory() {
 		if (sessionFactory == null) {
-			try {
+//			try {
 				Configuration configuration = new Configuration().configure();
 				configuration.addAnnotatedClass(Sensor.class);
 				configuration.addAnnotatedClass(Producer.class);
@@ -84,9 +84,9 @@ public class DBUtil {
 						.applySettings(configuration.getProperties());
 //			SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
 				sessionFactory = configuration.buildSessionFactory(builder.build());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
 		}
 		return sessionFactory;
 	}
