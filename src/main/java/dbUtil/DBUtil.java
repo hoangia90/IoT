@@ -41,10 +41,10 @@ public class DBUtil {
 	//On Heroku
 	
 //	static String URL = "ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/damf1hqq0uf37l?sslmode=require&user=raeurnikaltquu&password=946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c";
-//	static String URL = "jdbc:postgresql://ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/damf1hqq0uf37l?sslmode=require&sslfactory=org.postgresql.ssl.NonValidatingFactory&user=raeurnikaltquu&password=946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c";
-	static String URL = "postgres://raeurnikaltquu:946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c@ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/damf1hqq0uf37l";
-	static String USER = "raeurnikaltquu";
-	static String PASS = "946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c";
+	static String URL = "jdbc:postgresql://ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/damf1hqq0uf37l?sslmode=require&sslfactory=org.postgresql.ssl.NonValidatingFactory&user=raeurnikaltquu&password=946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c";
+//	static String URL = "jdbc:postgresql://raeurnikaltquu:946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c@ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/damf1hqq0uf37l";
+//	static String USER = "raeurnikaltquu";
+//	static String PASS = "946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c";
 	static String DIALECT = "org.hibernate.dialect.PostgreSQLDialect";
 	static String SHOW_SQL = "true";
 	static String CURRENT_SESSION_CONTEXT_CLASS = "thread";
@@ -76,8 +76,8 @@ public class DBUtil {
 				Properties settings = new Properties();
 				settings.put(Environment.DRIVER, DRIVER);
 				settings.put(Environment.URL, URL);
-				settings.put(Environment.USER, USER);
-				settings.put(Environment.PASS, PASS);
+//				settings.put(Environment.USER, USER);
+//				settings.put(Environment.PASS, PASS);
 				settings.put(Environment.DIALECT, DIALECT);
 				settings.put(Environment.SHOW_SQL, SHOW_SQL);
 				settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, CURRENT_SESSION_CONTEXT_CLASS);
