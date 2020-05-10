@@ -49,7 +49,7 @@ public class DBUtil {
 	static String CURRENT_SESSION_CONTEXT_CLASS = "thread";
 	static String HBM2DDL_AUTO = "create-drop";
 	
-	String jdbcDbUrl = System.getenv("JDBC_DATABASE_URL");
+	static String jdbcDbUrl = System.getenv("JDBC_DATABASE_URL");
 	
 	//Local
 //	static String DRIVER = "org.postgresql.Driver";
