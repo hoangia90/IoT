@@ -56,18 +56,21 @@ public class DBtest {
 		return JdbcUrl;
 	}
 
-	public static void PostgresqlHerokuTest(String JDBCURL) {
+	public static String PostgresqlHerokuTest(String JDBCURL) {
+		String s = "PostgreSQL Connection on Heroku is not connected !!!!!";
 		try {
 			Class.forName("org.postgresql.Driver");
 //			con = DriverManager.getConnection(
 //					"jdbc:postgresql://ec2-54-247-85-251.eu-west-1.compute.amazonaws.com:5432/d3cduui8428u5l?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory",
 //					"xkxtjvpzvnhpnm", "a368f47b501eb93092a92f4e6d9ec1b4fc47f35abeccd98bdce90de459c2685b");
 			con = DriverManager.getConnection(JDBCURL);
-			System.out.println(" PostgreSQL Connection on Heroku is successful !!!!!");
+			s = " PostgreSQL Connection on Heroku is connected !!!!!";
+			System.out.println(s);
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return s;
 	}
 
 	public static void main(String[] args) throws URISyntaxException {

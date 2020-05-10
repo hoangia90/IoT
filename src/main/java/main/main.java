@@ -2,6 +2,7 @@ package main;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import dbUtil.DBUtil;
+import dbUtil.DBtest;
 import devices.Producer;
 import devices.Sensor;
 import observation.Observation;
@@ -91,8 +93,8 @@ public class main extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		setRequest(request, response);
 
-		if (!parameterNames.isEmpty() && isUser()) {
-//		if (!parameterNames.isEmpty()) {
+//		if (!parameterNames.isEmpty() && isUser()) {
+		if (!parameterNames.isEmpty()) {
 			if (checkParam(0, "req", "insert") && checkParam(1, "table", "sensor") && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("name") && !parameterNames.get(3).isEmpty() && parameterNames.get(3).equals("type") && !parameterNames.get(4).isEmpty() && parameterNames.get(4).equals("user")) {
 				Sensor sensor = new Sensor(getValueAt(2), getValueAt(3));
 				DBUtil.createSensor(sensor);
@@ -225,7 +227,21 @@ public class main extends HttpServlet {
 				out.print(reqJsonString);
 				out.flush();
 			
-			
+			} else if (checkParam(0, "test", "connection")) {
+//				String uri = "postgres://raeurnikaltquu:946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c@ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/damf1hqq0uf37l";
+//				String JdbcUrl = null;
+//				try {
+//					JdbcUrl = DBtest.buildJdbcUrl(uri);
+//				} catch (URISyntaxException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				DBtest.PostgresqlHerokuTest(JdbcUrl);
+//				PrintWriter out = response.getWriter();
+//				response.setContentType("application/json");
+//				response.setCharacterEncoding("UTF-8");
+//				out.print(reqJsonString);
+//				out.flush();
 			} else {
 				JsonObject limitInfo = new JsonObject();
 				limitInfo.addProperty("Error", "This kind of request is not supported!!!");
