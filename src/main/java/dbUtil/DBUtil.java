@@ -222,8 +222,8 @@ public class DBUtil {
 	public static ArrayList<User> selectAllUser() {
 		Session session = getSessionFactory().openSession();
 		session.beginTransaction();
-		@SuppressWarnings("unchecked")
-		List<Object[]> result = session.createSQLQuery("SELECT * FROM iot_user").list();	
+		List<Object[]> result = null;
+		result = (List<Object[]>) session.createSQLQuery("SELECT * FROM iot_user").list();	
 		ArrayList<User> users = new ArrayList<User>();
 		for (Object[] u : result) {
 			User usr = new User(Integer.parseInt(u[0].toString()), u[1].toString());

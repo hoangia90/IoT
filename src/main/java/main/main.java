@@ -91,8 +91,8 @@ public class main extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		setRequest(request, response);
 
-//		if (!parameterNames.isEmpty() && isUser()) {
-		if (!parameterNames.isEmpty()) {
+		if (!parameterNames.isEmpty() && isUser()) {
+//		if (!parameterNames.isEmpty()) {
 			if (checkParam(0, "req", "insert") && checkParam(1, "table", "sensor") && !parameterNames.get(2).isEmpty() && parameterNames.get(2).equals("name") && !parameterNames.get(3).isEmpty() && parameterNames.get(3).equals("type") && !parameterNames.get(4).isEmpty() && parameterNames.get(4).equals("user")) {
 				Sensor sensor = new Sensor(getValueAt(2), getValueAt(3));
 				DBUtil.createSensor(sensor);
