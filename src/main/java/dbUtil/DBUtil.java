@@ -40,7 +40,7 @@ public class DBUtil {
 //	static String URL = "jdbc:postgresql://ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/damf1hqq0uf37l?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory&user=raeurnikaltquu&password=946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c";
 	//On Heroku
 //	static String URL = "ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/damf1hqq0uf37l?sslmode=require&user=raeurnikaltquu&password=946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c";
-	static String URL = "jdbc:postgresql://ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/damf1hqq0uf37l?sslmode=require&user=raeurnikaltquu&password=946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c";
+	static String URL = "jdbc:postgresql://ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/damf1hqq0uf37l?sslmode=require&&sslmode=require&user=raeurnikaltquu&password=946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c";
 //	static String USER = "xkxtjvpzvnhpnm";
 //	static String PASS = "a368f47b501eb93092a92f4e6d9ec1b4fc47f35abeccd98bdce90de459c2685b";
 	static String DIALECT = "org.hibernate.dialect.PostgreSQLDialect";
@@ -77,7 +77,7 @@ public class DBUtil {
 				settings.put(Environment.DIALECT, DIALECT);
 				settings.put(Environment.SHOW_SQL, SHOW_SQL);
 				settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, CURRENT_SESSION_CONTEXT_CLASS);
-				settings.put(Environment.HBM2DDL_AUTO, HBM2DDL_AUTO);
+//				settings.put(Environment.HBM2DDL_AUTO, HBM2DDL_AUTO);
 				configuration.setProperties(settings);
 
 				StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
@@ -236,8 +236,7 @@ public class DBUtil {
 	}
 	
 	public static ArrayList<User> selectAllUser() {
-		sessionFactory = getSessionFactory();
-		Session session = sessionFactory.openSession();
+		Session session = getSessionFactory().openSession();
 		session.beginTransaction();
 		@SuppressWarnings("unchecked")
 		List<Object[]> result = session.createSQLQuery("SELECT * FROM iot_user").list();
