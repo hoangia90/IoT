@@ -228,20 +228,23 @@ public class main extends HttpServlet {
 				out.flush();
 			
 			} else if (checkParam(0, "test", "connection")) {
-//				String uri = "postgres://raeurnikaltquu:946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c@ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/damf1hqq0uf37l";
-//				String JdbcUrl = null;
-//				try {
-//					JdbcUrl = DBtest.buildJdbcUrl(uri);
-//				} catch (URISyntaxException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//				DBtest.PostgresqlHerokuTest(JdbcUrl);
-//				PrintWriter out = response.getWriter();
-//				response.setContentType("application/json");
-//				response.setCharacterEncoding("UTF-8");
-//				out.print(reqJsonString);
-//				out.flush();
+				String uri = "postgres://raeurnikaltquu:946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c@ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/damf1hqq0uf37l";
+				String JdbcUrl = null;
+				try {
+					JdbcUrl = DBtest.buildJdbcUrl(uri);
+				} catch (URISyntaxException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				String s = DBtest.PostgresqlHerokuTest(JdbcUrl);
+				JsonObject limitInfo = new JsonObject();
+				limitInfo.addProperty("Error", s);
+				String reqJsonString = new Gson().toJson(limitInfo);
+				PrintWriter out = response.getWriter();
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+				out.print(reqJsonString);
+				out.flush();
 			} else {
 				JsonObject limitInfo = new JsonObject();
 				limitInfo.addProperty("Error", "This kind of request is not supported!!!");
