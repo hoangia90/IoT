@@ -76,8 +76,8 @@ public class DBUtil {
 				Properties settings = new Properties();
 				settings.put(Environment.DRIVER, DRIVER);
 				settings.put(Environment.URL, URL);
-//				settings.put(Environment.USER, USER);
-//				settings.put(Environment.PASS, PASS);
+				settings.put(Environment.USER, USER);
+				settings.put(Environment.PASS, PASS);
 				settings.put(Environment.DIALECT, DIALECT);
 				settings.put(Environment.SHOW_SQL, SHOW_SQL);
 				settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, CURRENT_SESSION_CONTEXT_CLASS);
