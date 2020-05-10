@@ -18,7 +18,7 @@ import observation.Observation;
 public class DBUtil {
 
 //	static Session sessionObj;
-	static SessionFactory sessionFactory = null;
+	static SessionFactory sessionFactory = getSessionFactory();
 
 //  private static SessionFactory buildSessionFactory() {
 //  // Creating Configuration Instance & Passing Hibernate Configuration File
