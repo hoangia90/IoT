@@ -2,7 +2,6 @@ package main;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +14,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import dbUtil.DBUtil;
-import dbUtil.DBtest;
 import devices.Producer;
 import devices.Sensor;
 import observation.Observation;
@@ -32,7 +30,7 @@ public class main extends HttpServlet {
 	List<String> parameterNames;
 	
 	
-	//This help writing the additional methods faster - no need to declare arguments
+	//This help writing additional methods faster - no need to declare arguments
 	void setRequest (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.request = request;
 		this.response = response;
@@ -227,27 +225,27 @@ public class main extends HttpServlet {
 				out.print(reqJsonString);
 				out.flush();
 			
-			} else if (checkParam(0, "test", "connection")) {
-				String uri = "postgres://raeurnikaltquu:946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c@ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/damf1hqq0uf37l";
-				String JdbcUrl = null;
-				try {
-					JdbcUrl = DBtest.buildJdbcUrl(uri);
-				} catch (URISyntaxException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				String s = DBtest.PostgresqlHerokuTest(JdbcUrl);
-				JsonObject limitInfo = new JsonObject();
-				limitInfo.addProperty("Msg", s);
-				limitInfo.addProperty("uri", uri);
-				limitInfo.addProperty("JdbcUrl", JdbcUrl);
-				
-				String reqJsonString = new Gson().toJson(limitInfo);
-				PrintWriter out = response.getWriter();
-				response.setContentType("application/json");
-				response.setCharacterEncoding("UTF-8");
-				out.print(reqJsonString);
-				out.flush();
+//			} else if (checkParam(0, "test", "connection")) {
+//				String uri = "postgres://raeurnikaltquu:946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c@ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/damf1hqq0uf37l";
+//				String JdbcUrl = null;
+//				try {
+//					JdbcUrl = DBtest.buildJdbcUrl(uri);
+//				} catch (URISyntaxException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				String s = DBtest.PostgresqlHerokuTest(JdbcUrl);
+//				JsonObject limitInfo = new JsonObject();
+//				limitInfo.addProperty("Msg", s);
+//				limitInfo.addProperty("uri", uri);
+//				limitInfo.addProperty("JdbcUrl", JdbcUrl);
+//				
+//				String reqJsonString = new Gson().toJson(limitInfo);
+//				PrintWriter out = response.getWriter();
+//				response.setContentType("application/json");
+//				response.setCharacterEncoding("UTF-8");
+//				out.print(reqJsonString);
+//				out.flush();
 			} else {
 				JsonObject limitInfo = new JsonObject();
 				limitInfo.addProperty("Error", "This kind of request is not supported!!!");

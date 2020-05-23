@@ -20,21 +20,8 @@ import observation.Observation;
 public class DBUtil {
 
 	static SessionFactory sessionFactory = null;;
-
-//  private static SessionFactory buildSessionFactory() {
-//  // Creating Configuration Instance & Passing Hibernate Configuration File
-//  Configuration configObj = new Configuration();
-//  configObj.configure("/hibernate.cfg.xml");
-//
-//  // Since Hibernate Version 4.x, ServiceRegistry Is Being Used
-//  ServiceRegistry serviceRegistryObj = new StandardServiceRegistryBuilder().applySettings(configObj.getProperties()).build(); 
-//
-//  // Creating Hibernate SessionFactory Instance
-//  sessionFactoryObj = configObj.buildSessionFactory(serviceRegistryObj);
-//  return sessionFactoryObj;
-//}
 	
-	//Heroku
+	//Heroku Server
 //	static String DRIVER = "org.postgresql.Driver";
 //	//Remote to Heroku
 ////	static String URL = "jdbc:postgresql://ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/damf1hqq0uf37l?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory&user=raeurnikaltquu&password=946d69e235696580d7b8f6db05cf4a4bc6403a13846620bf715491c30467858c";
@@ -50,7 +37,7 @@ public class DBUtil {
 //	static String CURRENT_SESSION_CONTEXT_CLASS = "thread";
 //	static String HBM2DDL_AUTO = "create-drop";
 	
-	//Local
+	//Local Host
 	static String DRIVER = "org.postgresql.Driver";
 	static String URL = "jdbc:postgresql://localhost:5432/IoT?user=postgres&password=123&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
 //	static String USER = "postgres";
@@ -65,23 +52,24 @@ public class DBUtil {
 		if (sessionFactory == null) {
 			try {
 				Configuration configuration = new Configuration().configure();
-				configuration.addAnnotatedClass(Sensor.class);
+				configuration.addAnnotatedClass(devices.Sensor.class);
 				configuration.addAnnotatedClass(Producer.class);
 				configuration.addAnnotatedClass(Observation.class);
 				configuration.addAnnotatedClass(User.class);
-//        		configuration.setProperty("hibernate.connection.username", "gia");
+				// Options
+//        		configuration.setProperty("hibernate.connection.username", "admin");
 //        		configuration.setProperty("hibernate.connection.password", "1234");
 				Properties settings = new Properties();
 				settings.put(Environment.DRIVER, DRIVER);
 				settings.put(Environment.URL, URL);
-//				settings.put(Environment.USER, USER);
-//				settings.put(Environment.PASS, PASS);
 				settings.put(Environment.DIALECT, DIALECT);
 				settings.put(Environment.SHOW_SQL, SHOW_SQL);
 				settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, CURRENT_SESSION_CONTEXT_CLASS);
-//				settings.put(Environment.HBM2DDL_AUTO, HBM2DDL_AUTO);
 				configuration.setProperties(settings);
-
+				//
+//				settings.put(Environment.USER, USER);
+//				settings.put(Environment.PASS, PASS);
+//				settings.put(Environment.HBM2DDL_AUTO, HBM2DDL_AUTO);
 				StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
 						.applySettings(configuration.getProperties());
 				sessionFactory = configuration.buildSessionFactory(builder.build());
@@ -105,7 +93,6 @@ public class DBUtil {
             if(retSession == null) {
                 System.err.println("session is discovered null");
             }
- 
             return retSession;
     }
 
@@ -131,22 +118,16 @@ public class DBUtil {
 	public static void createObservation(Observation observation, Integer producer_id, Integer sensor_id) {
 		Session session = getSessionFactory().openSession();
 		session.beginTransaction();
-		
 		List<Observation> observations = new ArrayList<Observation>();
 		observations.add(observation);
-		
 		Producer producer =(Producer)session.get(Producer.class, producer_id);
 		Sensor sensor =(Sensor)session.get(Sensor.class, sensor_id);
-		
 		producer.setObservations(observations);
 		sensor.setObservations(observations);
-		
 		session.merge(producer);
 		session.merge(sensor);
-		
 		session.update(producer);
 		session.update(sensor);
-		
 		session.save(observation);
 		session.getTransaction().commit();
 		session.close();
@@ -161,7 +142,6 @@ public class DBUtil {
 		session.getTransaction().commit();
 		session.close();
 		System.out.println("Successfully deleted " + sensor.toString());
-
 	}
 
 	public static Sensor findBySensorID(Integer id) {
@@ -179,7 +159,6 @@ public class DBUtil {
 		session.getTransaction().commit();
 		session.close();
 		System.out.println("Successfully deleted " + producer.toString());
-
 	}
 
 	public static Producer findByProducerID(Integer id) {
@@ -197,7 +176,6 @@ public class DBUtil {
 		session.getTransaction().commit();
 		session.close();
 		System.out.println("Successfully deleted " + observation.toString());
-
 	}
 
 	public static Observation findByObservationID(Integer id) {
@@ -255,21 +233,17 @@ public class DBUtil {
 	public static ArrayList<String> selectAllSerial() {
 		Session session = getSessionFactory().openSession();
 		session.beginTransaction();
-//		List<String> result = session.createSQLQuery("SELECT serial FROM producer").list();
 		@SuppressWarnings("unchecked")
 		List<String> result = session.createSQLQuery("SELECT serial FROM producer").list();	
-
 		session.getTransaction().commit();
 		session.close();
 	    return (ArrayList<String>) result;
 	}
 
-
-
-	
 	
 	public static void main(String[] args) {
-		// backup
+		// Testing
+		// Backup Test
 //    	CodeSource codeSource = Compute.class.getProtectionDomain().getCodeSource();
 //		  File jarFile = null;
 //		try {
